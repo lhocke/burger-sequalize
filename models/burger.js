@@ -1,7 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
 	var Burger = sequelize.define("Burger", {
 		text: DataTypes.string,
-		complete: DataTypes.BOOLEAN
+		allowNull: false,
+		validate: {
+			len: [1]
+		}
 	});
-	return Burger
+
+	Burger.associate = function(models) {
+		Burger.belongsTo (models.Customer, {
+			foreignKey: {
+				allowNull: false
+			}
+		});
+	};
+
+	return Burger;
 };
