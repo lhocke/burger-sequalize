@@ -1,1 +1,21 @@
+body {
     font-family: 'Exo 2', sans-serif;
+    background: #08d9c4;
+}
+
+/*#eaten {
+    border: solid 1px;
+}*/
+.burger-box {
+    background: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.sub {
+    margin-top: 55%;
+    margin-left: -5px;
+    /*margin-right: 30px;*/
+}
