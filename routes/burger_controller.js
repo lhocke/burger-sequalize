@@ -1,4 +1,4 @@
-// var express = require("express");
+var express = require("express");
 var db = require("../models");
 
 var router = express.Router();
@@ -15,7 +15,7 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res) {
   db.Burger.create({
-    burger_name: req.body.burger_name
+    burger_name: req.body.name
   }).then(function() {
     res.redirect("/");
   });
