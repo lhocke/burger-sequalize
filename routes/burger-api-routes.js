@@ -1,34 +1,21 @@
 var db = requires("../models");
+// var express = require("express");
 
 module.exports = function(app) {
-	app.get("/api/burgers", function(req, res) {
-		var query= {};
-		if (req.query.customer_id) {
-			query.CustomerId = req.query.customer_id;
-		}
-
-		db.Customer.findAll({
-			where: query,
-			include: [db.Customer]
-		}).then(function(dbBurger) {
-			res.json(dbBurger);
-		});
-	});
-
-	app.get("/api/burgers/:id", function(req, res) {
-		db.Burger.findOne({
-			where: {
-				id: req.params.id
-			},
-			include: [db.Customer]
-		}).then(function(dbBurger){
-			res.json(dbBurger)
+	app.get("/", function(req, res) {
+		db.Burger.findall({}).then(function(burgers) {
+			var hbsObject= {
+				burgers: burgers
+			};			
 		})
+		
 	});
 
 	app.post("/api/burgers", function(req, res) {
-		db.Burger.create(req.body).then(function(dbBurger) {
-			res.json(dbBurger);
+		db.Burger.create({
+			burger_name: req.body.burger_name
+		}).then(function() {
+	    	res.redirect("/");
 		});
 	});
 
@@ -43,15 +30,15 @@ module.exports = function(app) {
 	});
 
 	app.put("/api/burgers", function(req, res) {
-		db.Burger.update(
-			req.body,
-			{
-				where: {
-					id: req.body.id
-				}
-			}).then(function(dbBurger) {
-				res.json(dbBurger);
-			});
-	});
+		db.Burger.update({
+			devoured: true
+		},
+		{
+			where: {
+				id: req.params.id
+			}
+		}).then(function() {
+			res.redirect("/");
+		})
 
 };
