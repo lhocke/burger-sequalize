@@ -1,6 +1,11 @@
+/** {
+  border: solid red 1px;
+}*/
+
 body {
     font-family: 'Exo 2', sans-serif;
     background: #08d9c4;
+    margin-bottom: 60px;
 }
 
 /*#eaten {
@@ -20,9 +25,16 @@ body {
     /*margin-right: 30px;*/
 }
 
+.container {
+  width: auto;
+  height: auto;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 73%;
   height: 60px;
 }
